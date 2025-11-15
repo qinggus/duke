@@ -29,6 +29,14 @@ public class BongoCat {
                 break;
             }
             else if (input.equals("list")) {manager.returnList();} //calls list feature
+            else if (input.startsWith("mark ")) {
+                int i = Integer.parseInt(input.substring(5));
+                manager.markTask(i);
+            }
+            else if (input.startsWith("unmark ")) {
+                int i = Integer.parseInt(input.substring(7));
+                manager.unmarkTask(i);
+            }
             else if (input.equals("space left")) {
                 System.out.println(
                         "____________________________________________________________\n" +
