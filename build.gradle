@@ -31,12 +31,12 @@ application {
     mainClass = "bongocat.BongoCat"
 }
 
-
 shadowJar {
-    archiveBaseName = "duke"
+    archiveBaseName = "BongoCat"
     archiveClassifier = null
 }
 
-run{
+run {
     standardInput = System.in
+    jvmArgs '-ea'
 }

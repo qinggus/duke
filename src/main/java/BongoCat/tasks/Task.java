@@ -9,9 +9,11 @@ public abstract class Task {
     protected boolean isDone;
 
     public Task(String name) {
+        assert name != null : "Task name cannot be null";
         this.name = name.trim();
         this.isDone = false;
     }
+
 
     public String getName() {
         return this.name;

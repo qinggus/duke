@@ -38,21 +38,23 @@ public class TaskList {
         return tasks.isEmpty();
     }
 
-    /** Deletes task using 1-based index */
     public Task deleteTask(int index) {
+        assert index > 0 && index <= tasks.size() : "Index out of bounds for deleteTask";
         return tasks.remove(index - 1);
     }
 
-    /** Mark done */
     public Task markTask(int index) {
+        assert index > 0 && index <= tasks.size() : "Index out of bounds for markTask";
         Task t = tasks.get(index - 1);
+        assert t != null : "Task should not be null after valid index";
         t.markDone();
         return t;
     }
 
-    /** Mark not done */
     public Task unmarkTask(int index) {
+        assert index > 0 && index <= tasks.size() : "Index out of bounds for unmarkTask";
         Task t = tasks.get(index - 1);
+        assert t != null : "Task should not be null after valid index";
         t.markNotDone();
         return t;
     }

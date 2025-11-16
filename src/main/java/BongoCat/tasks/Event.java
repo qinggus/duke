@@ -1,23 +1,26 @@
 package bongocat.tasks;
 
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
-
-/**
- * Event Class - Extends as a type of Task
- */
 public class Event extends Task {
-    private final LocalDate from;
-    private final LocalDate to;
+
+    private final String from;
+    private final String to;
 
     public Event(String name, String from, String to) {
         super(name);
-        this.from = LocalDate.parse(from);
-        this.to = LocalDate.parse(to);
+
+        assert from != null : "Event /from should not be null";
+        assert to != null  : "Event /to should not be null";
+
+        this.from = from.trim();
+        this.to = to.trim();
     }
-    @Override
-    public String getName() {
-        return this.name;
+
+    public String getFrom() {
+        return from;
+    }
+
+    public String getTo() {
+        return to;
     }
 
     @Override
@@ -26,27 +29,16 @@ public class Event extends Task {
     }
 
     @Override
-    public String toString() {
-        DateTimeFormatter fmt = DateTimeFormatter.ofPattern("MMM dd yyyy");
-        return getTypeIcon()
-                + statusBox()
-                + " " + name
-                + " (from: " + from.format(fmt)
-                + " to: " + to.format(fmt) + ")";
+    public String toSaveFormat() {
+        return "E | " + (isDone ? "[X]" : "[ ]")
+                + " | " + name + " | " + from + " | " + to;
     }
 
     @Override
-    public String toSaveFormat() {
-        return "E | " + (isDone ? "[X]" : "[ ]") + " | " + name
-                + " | " + from.toString()
-                + " | " + to.toString();
-    }
-
-    public LocalDate getFrom() {
-        return from;
-    }
-
-    public LocalDate getTo() {
-        return to;
+    public String toString() {
+        return getTypeIcon()
+                + statusBox()
+                + " " + name
+                + " (from: " + from + " to: " + to + ")";
     }
 }

@@ -10,8 +10,10 @@ import java.time.LocalDate;
  */
 public class Parser {
 
+
     public static Command parse(String input) throws BongoException {
         String trimmed = input.trim();
+        assert input != null : "Input to parser cannot be null";
 
         if (trimmed.equals("bye")) return new ExitCommand();
         if (trimmed.equals("list")) return new ListCommand();
@@ -68,6 +70,7 @@ public class Parser {
             String keyword = trimmed.substring(5).trim();
             return new FindCommand(keyword);
         }
+        assert false : "Parser failed to match a known command but did not throw earlier";
 
         throw new BongoException("HUH? Unknown command.");
     }

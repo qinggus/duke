@@ -20,7 +20,7 @@ public class AddTodoCommand extends Command {
     public void execute(TaskList tasks, Ui ui, Storage storage) {
 
         Task newTask = new ToDo(name);
-
+        assert newTask.getName().length() > 0 : "Task name should never be empty after creation";
         // Duplicate check
         if (tasks.isDuplicate(newTask)) {
             ui.showDuplicate(newTask);
