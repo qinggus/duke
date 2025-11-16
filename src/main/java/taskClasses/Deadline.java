@@ -1,4 +1,4 @@
-package taskExtentions;
+package taskClasses;
 
 public class Deadline extends Task {
 
@@ -17,7 +17,7 @@ public class Deadline extends Task {
     @Override
     public String toString() {
         return getTypeIcon()
-                + statusBox() + " "
+                + statusBox()
                 + name
                 + " (by: " + by + ")";
     }

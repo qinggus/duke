@@ -34,7 +34,7 @@ COMMAND: Any input
 USE: Echos back use input.
 NOTES: Uncomment echo feature and comment other features in BongoCat.Java to activate.
 
-## Add Task
+## Add taskClasses.Task
 COMMAND: Any input
 USE: Adds input as task to a list.
 NOTES: Returns message when list is full.

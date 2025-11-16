@@ -1,4 +1,4 @@
-package taskExtentions;
+package taskClasses;
 
 public abstract class Task {
     protected String name;

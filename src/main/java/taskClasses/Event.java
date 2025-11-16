@@ -1,4 +1,4 @@
-package taskExtentions;
+package taskClasses;
 
 public class Event extends Task {
 
@@ -17,7 +17,7 @@ public class Event extends Task {
     }
     public String toString() { //toString is a actually java thing
         return getTypeIcon()
-                + statusBox() + " "
+                + statusBox()
                 + name
                 + " (from: " + from + " to " + to + ")";
     }
