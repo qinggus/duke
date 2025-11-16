@@ -62,7 +62,7 @@ public class Parser {
             }
         }
 
-        throw new BongoException("Unknown command.");
+        throw new BongoException("HUH? Unknown command.");
     }
 
     private static int parseNum(String input, int offset) throws BongoException {

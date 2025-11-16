@@ -1,22 +1,18 @@
-
 package bongocat.ui;
 
-import bongocat.tasks.TaskList;
 import bongocat.tasks.Task;
+import bongocat.tasks.TaskList;
+
 import java.util.Scanner;
 
 /**
- * Returns all messages to user
+ * Handles all user interface messages.
  */
 public class Ui {
-    private final Scanner scanner;
 
-    public Ui() {
-        this.scanner = new Scanner(System.in);
-    }
+    private Scanner sc = new Scanner(System.in);
 
-
-public void showWelcome() {
+    public void showWelcome() {
         String logo = """
 ⠀⠀⠀⠀⠀⠀⠀⠀⠀⢠⣿⣶⣄⣀⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
 ⠀⠀⠀⠀⠀⠀⠀⢀⣴⣿⣿⣿⣿⣿⣿⣿⣿⣿⣶⣦⣄⣀⡀⣠⣾⡇⠀⠀⠀⠀
@@ -27,64 +23,70 @@ public void showWelcome() {
 ⠀⠹⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠸⣿⣿⣿⣿⣿⣿⣿⣷
 """;
 
-        System.out.println("----------------------------------------------");
         System.out.println("BONGO CAT ACTIVATED! This is DA BONGO CAT.\nHow may I annoy you today?\n" + logo);
-        System.out.println("----------------------------------------------");
     }
 
-
-public void showLine() {
-        System.out.println("____________________________________________________________");
-    }
-
-
-public String readCommand() {
-        return scanner.nextLine().trim();
-    }
-
-public void showError(String message) {
-        System.out.println(message);
-    }
-
-public void showLoadingError() {
-        System.out.println("⚠ Error loading file. Starting with an empty belly...");
-    }
-
-public void showGoodbye() {
+    public void showGoodbye() {
         System.out.println("GOODBYE.");
     }
 
-public void showList(TaskList tasks) {
-        System.out.println("DA LIST:");
-        int index = 1;
-        for (Task task : tasks.getAllTasks()) {
-            System.out.println(index + ". " + task);
-            index++;
+    public String readCommand() {
+        return sc.nextLine();
+    }
+
+    public void showLine() {
+        System.out.println("____________________________________________________________");
+    }
+
+    public void showError(String msg) {
+        System.out.println(msg);
+    }
+
+    public void showList(TaskList tasks) {
+        System.out.println("NAH YOUR TASKS:");
+        int i = 1;
+        for (Task t : tasks.getTasks()) {
+            System.out.println(i + ". " + t);
+            i++;
         }
     }
 
-public void showTaskAdded(Task task, int total) {
-        System.out.println("OK. I've Added this task:");
-        System.out.println(task);
-        System.out.println("No. of Tasks in DA LIST: " + total);
+    public void showTaskAdded(Task t, int size) {
+        System.out.println("Oki! I've added this task:");
+        System.out.println("  " + t);
+        System.out.println("Now you have " + size + " tasks in the list.");
     }
 
-public void showTaskDeleted(Task task, int total) {
-        System.out.println("Oki. Removed " + task + ".");
-        System.out.println("No. of Tasks in DA LIST: " + total);
+    /** Matches AddDeadlineCommand.showAdd */
+    public void showAdd(Task t, int size) {
+        System.out.println("Oki! I've added this task:");
+        System.out.println("  " + t);
+        System.out.println("Now you have " + size + " tasks in the list.");
     }
 
-public void showTaskMarked(Task task) {
-        System.out.println("NOICE! I've marked this task as DONE:");
-        System.out.println("  " + task);
+    /** Matches Duplicate detection */
+    public void showDuplicate(Task t) {
+        System.out.println("Bruh, this task already exists:");
+        System.out.println("  " + t);
     }
 
-public void showTaskUnmarked(Task task) {
-        System.out.println("Okay! I've UNMARKED this task:");
-        System.out.println("  " + task);
+    public void showTaskDeleted(Task t, int size) {
+        System.out.println("Oki. I've removed this task:");
+        System.out.println("  " + t);
+        System.out.println("Now you have " + size + " tasks in the list.");
     }
 
-public void showSpaceLeft(int space) {
+    public void showTaskMarked(Task t) {
+        System.out.println("NOICE. Marked this task as done:");
+        System.out.println("  " + t);
+    }
+
+    public void showTaskUnmarked(Task t) {
+        System.out.println("Boo~ I've marked this task as not done:");
+        System.out.println("  " + t);
+    }
+
+    public void showSpaceLeft(int space) {
         System.out.println("Space left: " + space);
     }
 }

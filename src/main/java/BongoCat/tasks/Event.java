@@ -15,6 +15,10 @@ public class Event extends Task {
         this.from = LocalDate.parse(from);
         this.to = LocalDate.parse(to);
     }
+    @Override
+    public String getName() {
+        return this.name;
+    }
 
     @Override
     public String getTypeIcon() {

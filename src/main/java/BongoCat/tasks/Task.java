@@ -1,16 +1,20 @@
-
 package bongocat.tasks;
 
 /**
- * Main Task Class
+ * Base Task class
  */
 public abstract class Task {
+
     protected String name;
     protected boolean isDone;
 
     public Task(String name) {
-        this.name = name;
+        this.name = name.trim();
         this.isDone = false;
+    }
+
+    public String getName() {
+        return this.name;
     }
 
     public void markDone() {

@@ -6,17 +6,17 @@ import bongocat.storage.Storage;
 import bongocat.tasks.TaskList;
 import bongocat.commands.Command;
 import bongocat.parser.Parser;
-import bongocat.BongoException;
+
 /**
  * Main logic of BongCat
  */
-public class BongoCatApp {
+public class BongoCat {
 
     private Storage storage;
     private TaskList tasks;
     private Ui ui;
 
-    public BongoCatApp(String filePath) {
+    public BongoCat(String filePath) {
         ui = new Ui();
         storage = new Storage(filePath);
         tasks = new TaskList(storage.load());
@@ -41,6 +41,6 @@ public class BongoCatApp {
     }
 
     public static void main(String[] args) {
-        new BongoCatApp("SavedFiles/BongoCat.txt").run();
+        new BongoCat("SavedFiles/BongoCat.txt").run();
     }
 }

@@ -1,55 +1,77 @@
-
 package bongocat.tasks;
 
-import bongocat.BongoException;
 import java.util.ArrayList;
 
 /**
- * A Task Manager to execute all commands
+ * Represents the list of tasks.
  */
-
 public class TaskList {
-    private static final int MAX = 100;
-    private final ArrayList<Task> tasks;
 
-    public TaskList() {
-        tasks = new ArrayList<>(MAX);
+    private ArrayList<Task> tasks;
+
+    public TaskList(ArrayList<Task> loaded) {
+        this.tasks = (loaded == null) ? new ArrayList<>() : loaded;
     }
 
-    public TaskList(ArrayList<Task> tasks) {
-        this.tasks = tasks;
+    /** Returns all tasks */
+    public ArrayList<Task> getAllTasks() {
+        return tasks;
     }
 
-    public int size() { return tasks.size(); }
-    public boolean isEmpty() { return tasks.isEmpty(); }
-    public int spaceLeft() { return MAX - tasks.size(); }
-    public ArrayList<Task> getAllTasks() { return tasks; }
+    /** Returns all tasks */
+    public ArrayList<Task> getTasks() {
+        return tasks;
+    }
 
-    public void addTask(Task t) throws BongoException {
-        if (tasks.size() >= MAX) throw new BongoException("Belly full!");
+    /** Adds a task */
+    public void addTask(Task t) {
         tasks.add(t);
     }
 
-    public Task deleteTask(int num) throws BongoException {
-        int idx = checkIndex(num);
-        return tasks.remove(idx);
+    /** Returns number of tasks */
+    public int size() {
+        return tasks.size();
     }
 
-    public Task markTask(int num) throws BongoException {
-        int idx = checkIndex(num);
-        tasks.get(idx).markDone();
-        return tasks.get(idx);
+    /** Checks if empty */
+    public boolean isEmpty() {
+        return tasks.isEmpty();
     }
 
-    public Task unmarkTask(int num) throws BongoException {
-        int idx = checkIndex(num);
-        tasks.get(idx).markNotDone();
-        return tasks.get(idx);
+    /** Deletes task using 1-based index */
+    public Task deleteTask(int index) {
+        return tasks.remove(index - 1);
     }
 
-    private int checkIndex(int num) throws BongoException {
-        int idx = num - 1;
-        if (idx < 0 || idx >= tasks.size()) throw new BongoException("Invalid task number.");
-        return idx;
+    /** Mark done */
+    public Task markTask(int index) {
+        Task t = tasks.get(index - 1);
+        t.markDone();
+        return t;
+    }
+
+    /** Mark not done */
+    public Task unmarkTask(int index) {
+        Task t = tasks.get(index - 1);
+        t.markNotDone();
+        return t;
+    }
+
+    /**
+     * Duplicate check by TASK NAME (case-insensitive).
+     * This is the correct way for Duke-level projects.
+     */
+    public boolean isDuplicate(Task newTask) {
+        for (Task t : tasks) {
+            if (t.getName().equalsIgnoreCase(newTask.getName())) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    /** If using max 100 tasks */
+    public int spaceLeft() {
+        return 100 - tasks.size();
     }
 }

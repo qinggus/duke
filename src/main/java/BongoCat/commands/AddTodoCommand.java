@@ -1,15 +1,15 @@
-
 package bongocat.commands;
 
-import bongocat.tasks.*;
-import bongocat.storage.Storage;
+import bongocat.tasks.Task;
+import bongocat.tasks.TaskList;
+import bongocat.tasks.ToDo;
 import bongocat.ui.Ui;
-import bongocat.BongoException;
+import bongocat.storage.Storage;
+
 import java.io.IOException;
-/**
- * Adds Todo Task
- */
+
 public class AddTodoCommand extends Command {
+
     private final String name;
 
     public AddTodoCommand(String name) {
@@ -17,10 +17,25 @@ public class AddTodoCommand extends Command {
     }
 
     @Override
-    public void execute(TaskList tasks, Ui ui, Storage storage) throws BongoException {
-        Task t = new ToDo(name);
-        tasks.addTask(t);
-        try { storage.save(tasks.getAllTasks()); } catch (IOException e) { }
-        ui.showTaskAdded(t, tasks.size());
+    public void execute(TaskList tasks, Ui ui, Storage storage) {
+
+        Task newTask = new ToDo(name);
+
+        // Duplicate check
+        if (tasks.isDuplicate(newTask)) {
+            ui.showDuplicate(newTask);
+            return;
+        }
+
+        // Add task
+        tasks.addTask(newTask);
+        ui.showAdd(newTask, tasks.size());
+
+        // Save file — CATCH IOException here
+        try {
+            storage.save(tasks.getTasks());
+        } catch (IOException e) {
+            ui.showError("Error saving file: " + e.getMessage());
+        }
     }
 }

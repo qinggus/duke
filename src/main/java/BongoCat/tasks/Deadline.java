@@ -15,6 +15,11 @@ public class Deadline extends Task {
     }
 
     @Override
+    public String getName() {
+        return this.name;
+    }
+
+    @Override
     public String getTypeIcon() {
         return "[D]";
     }

@@ -10,6 +10,11 @@ public class ToDo extends Task {
     }
 
     @Override
+    public String getName() {
+        return this.name;
+    }
+
+    @Override
     public String getTypeIcon() {
         return "[T]";
     }

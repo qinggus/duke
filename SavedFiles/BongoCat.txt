@@ -1,6 +1,0 @@
-T | [X] | eat
-T | [ ] | eat
-T | [ ] | sleep
-T | [ ] | repeat
-D | [ ] | return book | 2019-12-02
-E | [ ] | concert | 2019-12-01 | 2019-12-02
