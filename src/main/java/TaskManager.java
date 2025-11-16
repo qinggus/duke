@@ -1,29 +1,31 @@
+import taskExtentions.Task;
+
 import java.util.ArrayList;
 
 public class TaskManager {
     private ArrayList<Task> list;
     private final int MAX_TASKS = 100; //Set maximum no. of items in list
-    private int count;
+//    private int count;
 
     public TaskManager() {
         list = new ArrayList<>(MAX_TASKS);
-        count = 0;
+//        count = 0;
     }
 
     //check space left
     public int spaceLeftcheck() {
-        return MAX_TASKS - count;
+        return MAX_TASKS - list.size();
     }
 
     // add task feature
-    public void addTask(String name) {
-        if(count < MAX_TASKS) {
-            list.add(new Task(name));
-            count++;
+    public void addTask(Task name) {
+        if(list.size() < MAX_TASKS) {
+            list.add(name);
+//            count++;
             System.out.println(
                     "____________________________________________________________\n" +
-                            "Added: " + name + "\n"
-                            + "Space left: " + spaceLeftcheck() + "\n" +
+                            "OK FINE. I've Added this task:\n" + name + "\n"
+                            + "No. of Tasks in DA LIST: " + list.size() + "\n" +
                     "____________________________________________________________\n");
         }
         else
@@ -37,10 +39,12 @@ public class TaskManager {
 
     //return list feature
     public void returnList(){
-        if (count > 0) {
+        if (!list.isEmpty()) {
             System.out.println("DA LIST:");
-            for (int i = 0; i < count; i++){
-                System.out.println((i+1) + "." + list.get(i));
+            int index = 1;
+            for (Task task : list) {
+                System.out.println( index + "." + task);
+                index++;
             }
             System.out.println("\n");
         }
@@ -74,4 +78,5 @@ public class TaskManager {
         }
         else {System.out.println("Bruh, no such task exists...");}
     }
+
 }

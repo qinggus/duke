@@ -1,3 +1,5 @@
+package taskExtentions;
+
 public abstract class Task {
     protected String name;
     protected boolean isDone;
@@ -26,7 +28,7 @@ public abstract class Task {
 
     @Override // overrides' Java's Object class
     public String toString() { //toString is a actually java thing
-        return getTypeIcon() + " "
+        return getTypeIcon()
                 + statusBox() + " "
                 + name;
     }
