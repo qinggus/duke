@@ -1,0 +1,8 @@
+T | [X] | eat
+D | [ ] | project | next week
+E | [ ] | computing lecture | 2pm | 4pm
+T | [ ] | eat
+T | [ ] | sleep
+T | [ ] | repeat
+D | [ ] | project | next week
+E | [ ] | computing lecture | 2pm | 4pm

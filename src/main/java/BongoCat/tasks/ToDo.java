@@ -1,9 +1,10 @@
-package taskClasses;
+
+package bongocat.tasks;
 
 public class ToDo extends Task {
 
-    public ToDo(String name){
-        super(name,TaskType.TODO);
+    public ToDo(String name) {
+        super(name);
     }
 
     @Override
@@ -15,6 +16,4 @@ public class ToDo extends Task {
     public String toSaveFormat() {
         return "T | " + (isDone ? "[X]" : "[ ]") + " | " + name;
     }
-
 }
-
