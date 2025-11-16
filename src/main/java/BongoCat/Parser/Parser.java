@@ -1,10 +1,10 @@
-
 package bongocat.parser;
 
 import bongocat.commands.*;
 import bongocat.BongoException;
 
 import java.time.LocalDate;
+
 /**
  * Scans, Trims, Calls commands and throws Exceptions
  */
@@ -35,7 +35,6 @@ public class Parser {
             String name = parts[0].substring(8).trim();
             String by = parts[1].trim();
 
-            // date validation
             try {
                 LocalDate.parse(by);
             } catch (Exception e) {
@@ -45,11 +44,13 @@ public class Parser {
             return new AddDeadlineCommand(name, by);
         }
 
-
         if (trimmed.startsWith("event")) {
             String[] parts = trimmed.split(" /from | /to ");
-            if (parts.length < 3) throw new BongoException("Event must have /from and /to");
-            return new AddEventCommand(parts[0].substring(5).trim(), parts[1].trim(), parts[2].trim());
+            if (parts.length < 3)
+                throw new BongoException("Event must have /from and /to");
+            return new AddEventCommand(parts[0].substring(5).trim(),
+                    parts[1].trim(),
+                    parts[2].trim());
         }
 
         if (trimmed.startsWith("on ")) {
@@ -62,11 +63,20 @@ public class Parser {
             }
         }
 
+        // 🔥 LEVEL 9: FIND COMMAND
+        if (trimmed.startsWith("find ")) {
+            String keyword = trimmed.substring(5).trim();
+            return new FindCommand(keyword);
+        }
+
         throw new BongoException("HUH? Unknown command.");
     }
 
     private static int parseNum(String input, int offset) throws BongoException {
-        try { return Integer.parseInt(input.substring(offset).trim()); }
-        catch (Exception e) { throw new BongoException("Invalid number."); }
+        try {
+            return Integer.parseInt(input.substring(offset).trim());
+        } catch (Exception e) {
+            throw new BongoException("Invalid number.");
+        }
     }
 }

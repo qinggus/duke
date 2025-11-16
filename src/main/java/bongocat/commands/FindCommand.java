@@ -1,24 +1,22 @@
 package bongocat.commands;
 
-import bongocat.tasks.Task;
 import bongocat.tasks.TaskList;
+import bongocat.tasks.Task;
 import bongocat.ui.Ui;
 import bongocat.storage.Storage;
+import java.util.ArrayList;
 
-public class FindWord extends Command {
+public class FindCommand extends Command {
 
     private final String keyword;
 
-    public FindWord(String keyword) {
+    public FindCommand(String keyword) {
         this.keyword = keyword.toLowerCase().trim();
     }
 
     @Override
     public void execute(TaskList tasks, Ui ui, Storage storage) {
-
-        // Get matching tasks
-        var results = tasks.findTasks(keyword);
-
+        ArrayList<Task> results = tasks.findTasks(keyword);
         ui.showFindResults(results);
     }
 }

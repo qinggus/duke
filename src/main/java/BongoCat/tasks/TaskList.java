@@ -74,4 +74,20 @@ public class TaskList {
     public int spaceLeft() {
         return 100 - tasks.size();
     }
+
+    /**
+     * Returns tasks whose name contains the keyword (case-insensitive).
+     */
+    public ArrayList<Task> findTasks(String keyword) {
+        ArrayList<Task> matches = new ArrayList<>();
+
+        for (Task t : tasks) {
+            if (t.getName().toLowerCase().contains(keyword)) {
+                matches.add(t);
+            }
+        }
+
+        return matches;
+    }
+
 }

@@ -1,4 +1,5 @@
 package bongocat.ui;
+import java.util.ArrayList;
 
 import bongocat.tasks.Task;
 import bongocat.tasks.TaskList;
@@ -89,4 +90,22 @@ public class Ui {
     public void showSpaceLeft(int space) {
         System.out.println("Space left: " + space);
     }
+
+    public void showFindResults(ArrayList<Task> results) {
+        System.out.println("____________________________________________________________");
+        System.out.println("Here are the matching tasks in your list:");
+
+        if (results.isEmpty()) {
+            System.out.println("  No matching tasks found.");
+        } else {
+            int index = 1;
+            for (Task t : results) {
+                System.out.println("  " + index + "." + t);
+                index++;
+            }
+        }
+
+        System.out.println("____________________________________________________________");
+    }
+
 }
