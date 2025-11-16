@@ -3,10 +3,13 @@ import java.util.ArrayList;
 
 public class TaskManager {
     private ArrayList<Task> list;
-    private final int MAX_TASKS = 100; // Set maximum number of items in list
+    protected final int MAX_TASKS = 100; // Set maximum number of items in list
 
     public TaskManager() {
         list = new ArrayList<>(MAX_TASKS);
+    }
+    public int getCurrentSize() {
+        return list.size();
     }
 
     // check space left
@@ -24,11 +27,20 @@ public class TaskManager {
                             "No. of Tasks in DA LIST: " + list.size() + "\n" +
                             "____________________________________________________________\n");
         } else {
-            System.out.println(
-                    "____________________________________________________________\n" +
-                            "MY BELLY IS TOO FULL! Can't add more tasks...\n" +
-                            "____________________________________________________________\n");
+            System.out.println("____________________________________________________________\n" +
+                    "MY BELLY IS TOO FULL! Can't add more tasks...\n" +
+                    "____________________________________________________________\n");
         }
+    }
+
+    public void deleteTask(int num) {
+        int index = num- 1;
+        Task task = list.get(index);
+        list.remove(index);
+        System.out.println("____________________________________________________________\n"
+                        + "Oki. Removed " + task + ".\n"
+                        + "No. of Tasks in DA LIST: " + list.size() + "\n"
+                        + "____________________________________________________________");
     }
 
     // return list feature

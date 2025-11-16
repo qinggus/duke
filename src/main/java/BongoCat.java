@@ -51,7 +51,6 @@ public class BongoCat {
             if (manager.returnList()){
                 throw new BongoException("Nothing in belly... No tasks added.");
             }
-            manager.returnList();
             return;
         }
         else if (input.startsWith("mark ")) {
@@ -107,10 +106,22 @@ public class BongoCat {
             String to = parts[2].trim();
 
             if (name.isEmpty() || from.isEmpty() || to.isEmpty()) {
-                throw new BongoException("HARLOW TYPE PROPERLY! Event name, /from, and /to cannot be empty.");
+                throw new BongoException("HARLOW TYPE PROPERLY! Event <name>, /from, and /to cannot be empty.");
             }
 
             manager.addTask(new Event(name, from, to));
+            return;
+        }
+        else if (input.startsWith("delete")) {
+            String[] parts = input.split(" ", 2);
+            if (parts.length < 2 || parts[1].isEmpty()) {
+                throw new BongoException("Delete what bro?\nFormat: delete <task number>");
+            }
+            int num = Integer.parseInt(parts[1]);
+            if (num <= 0 || num > manager.getCurrentSize()) {
+                throw new BongoException("Bruh, no such task exists... Try again with a valid number.");
+            }
+            manager.deleteTask(num);
             return;
         }
         throw new BongoException("Bro what?\n"
