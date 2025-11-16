@@ -7,7 +7,9 @@ import bongocat.ui.Ui;
 import bongocat.BongoException;
 
 import java.io.IOException;
-
+/**
+ * Unmarks task
+ */
 public class UnmarkCommand extends Command {
     private final int taskNumber;
 

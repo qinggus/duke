@@ -4,6 +4,10 @@ package bongocat.tasks;
 import bongocat.BongoException;
 import java.util.ArrayList;
 
+/**
+ * A Task Manager to execute all commands
+ */
+
 public class TaskList {
     private static final int MAX = 100;
     private final ArrayList<Task> tasks;

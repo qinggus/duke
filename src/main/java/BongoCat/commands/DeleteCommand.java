@@ -8,6 +8,9 @@ import bongocat.BongoException;
 
 import java.io.IOException;
 
+/**
+ * Deletes task
+ */
 public class DeleteCommand extends Command {
     private final int taskNumber;
 

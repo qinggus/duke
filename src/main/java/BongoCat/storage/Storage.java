@@ -5,7 +5,9 @@ import bongocat.tasks.*;
 import java.io.*;
 import java.nio.file.*;
 import java.util.ArrayList;
-
+/**
+ * Stores List Data in SavedFiles/BongoCat.txt for re-curring use
+ */
 public class Storage {
     private final Path filePath;
 

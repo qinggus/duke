@@ -1,8 +1,6 @@
 T | [X] | eat
-D | [ ] | project | next week
-E | [ ] | computing lecture | 2pm | 4pm
 T | [ ] | eat
 T | [ ] | sleep
 T | [ ] | repeat
-D | [ ] | project | next week
-E | [ ] | computing lecture | 2pm | 4pm
+D | [ ] | return book | 2019-12-02
+E | [ ] | concert | 2019-12-01 | 2019-12-02

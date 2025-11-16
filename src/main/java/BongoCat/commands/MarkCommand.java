@@ -7,7 +7,9 @@ import bongocat.ui.Ui;
 import bongocat.BongoException;
 
 import java.io.IOException;
-
+/**
+ * Marks Tasks
+ */
 public class MarkCommand extends Command {
     private final int taskNumber;
 

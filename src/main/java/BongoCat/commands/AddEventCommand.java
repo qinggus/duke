@@ -6,7 +6,9 @@ import bongocat.storage.Storage;
 import bongocat.ui.Ui;
 import bongocat.BongoException;
 import java.io.IOException;
-
+/**
+ * Adds Event Task
+ */
 public class AddEventCommand extends Command {
     private final String name;
     private final String from;

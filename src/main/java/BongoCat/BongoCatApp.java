@@ -7,7 +7,9 @@ import bongocat.tasks.TaskList;
 import bongocat.commands.Command;
 import bongocat.parser.Parser;
 import bongocat.BongoException;
-
+/**
+ * Main logic of BongCat
+ */
 public class BongoCatApp {
 
     private Storage storage;

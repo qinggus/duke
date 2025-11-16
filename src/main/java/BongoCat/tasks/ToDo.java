@@ -1,6 +1,8 @@
 
 package bongocat.tasks;
-
+/**
+ * Todo Class - Extends as a type of Task
+ */
 public class ToDo extends Task {
 
     public ToDo(String name) {

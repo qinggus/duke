@@ -6,7 +6,9 @@ import bongocat.storage.Storage;
 import bongocat.ui.Ui;
 import bongocat.BongoException;
 import java.io.IOException;
-
+/**
+ * Adds Todo Task
+ */
 public class AddTodoCommand extends Command {
     private final String name;
 

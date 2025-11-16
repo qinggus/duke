@@ -1,6 +1,9 @@
 
 package bongocat.tasks;
 
+/**
+ * Main Task Class
+ */
 public abstract class Task {
     protected String name;
     protected boolean isDone;
