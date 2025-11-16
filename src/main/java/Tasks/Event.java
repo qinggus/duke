@@ -6,7 +6,7 @@ public class Event extends Task {
     protected String to;
 
     public Event(String name, String from, String to) {
-        super(name);
+        super(name,TaskType.EVENT);
         this.from = from;
         this.to = to;
     }
@@ -15,10 +15,16 @@ public class Event extends Task {
     public String getTypeIcon() {
         return "[E]";
     }
+    @Override
     public String toString() { //toString is a actually java thing
         return getTypeIcon()
-                + statusBox()
+                + statusBox() + " "
                 + name
                 + " (from: " + from + " to " + to + ")";
+    }
+
+    @Override
+    public String toSaveFormat() {
+        return "E | " + (isDone ? "[X]" : "[ ]") + " | " + name + " | " + from + " | " + to;
     }
 }

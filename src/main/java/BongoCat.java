@@ -78,7 +78,7 @@ public class BongoCat {
             );
             return;
         } else if (input.startsWith("todo ")) {
-            String name = input.substring(5);
+            String name = input.substring(5).trim();
             if (name.isEmpty()) {
                 throw new BongoException("OII!!! You can't leave the description empty.");
             }

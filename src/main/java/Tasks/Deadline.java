@@ -5,7 +5,7 @@ public class Deadline extends Task {
     protected String by;
 
     public Deadline(String name, String by){
-        super(name);
+        super(name,TaskType.DEADLINE);
         this.by = by;
     }
 
@@ -20,5 +20,9 @@ public class Deadline extends Task {
                 + statusBox()
                 + name
                 + " (by: " + by + ")";
+    }
+    @Override
+    public String toSaveFormat() {
+        return "T | " + (isDone ? "[X]" : "[ ]") + " | " + name + " | " + by;
     }
 }
